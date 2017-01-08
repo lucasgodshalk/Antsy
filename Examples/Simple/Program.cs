@@ -16,8 +16,7 @@ class Program
         {
             res.Html(File.ReadAllText("Sample.html"));
         });
-        server.StaticFiles("/files", "");
-        server.StaticFiles("/bogus", "");
+        server.StaticFiles("/files", ""); //Serves all files in the application directory.
         server.Run();
     }
 }
