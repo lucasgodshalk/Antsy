@@ -116,7 +116,12 @@ namespace Antsy
         {
             foreach (var item in list)
             {
-                map(item.Item1, new RequestDelegate(context =>
+                var path = item.Item1;
+                if (path.StartsWith("/"))
+                {
+                    path = path.Remove(0, 1);
+                }
+                map(path, new RequestDelegate(context =>
                 {
                     return item.Item2(new AntsyRequest(context.Request), new AntsyResponse(context.Response));
                 }));

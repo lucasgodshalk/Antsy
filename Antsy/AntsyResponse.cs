@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace Antsy
 {
@@ -14,6 +15,54 @@ namespace Antsy
         public AntsyResponse(HttpResponse response)
         {
             _response = response;
+        }
+
+        public void Json(object content)
+        {
+            _response.ContentType = "application/json";
+
+            string contentStr;
+            if (content == null)
+            {
+                _response.StatusCode = 204;
+                return;
+            }
+            else if (content is string)
+            {
+                contentStr = (string)content;
+                if (contentStr.Length == 0)
+                {
+                    _response.StatusCode = 204;
+                    return;
+                }
+            }
+            else
+            {
+                contentStr = JsonConvert.SerializeObject(content);
+            }
+
+            var bytes = Encoding.UTF8.GetBytes(contentStr);
+
+            _response.StatusCode = 200;
+            _response.ContentLength = bytes.Length;
+            _response.Body.Write(bytes, 0, bytes.Length);
+        }
+
+        public void Text(string text)
+        {
+            _response.ContentType = "text/plain";
+
+            if (string.IsNullOrEmpty(text))
+            {
+                _response.StatusCode = 204;
+                return;
+            }
+
+            var bytes = Encoding.UTF8.GetBytes(text);
+
+            _response.StatusCode = 200;
+            _response.ContentLength = bytes.Length;
+            _response.Body.Write(bytes, 0, bytes.Length);
         }
 
         public override Stream Body

@@ -7,7 +7,7 @@ class Program
     static void Main(string[] args)
     {
         AntsyHost server = new AntsyHost(8000);
-        server.Get("hello", (req, res) => 
+        server.Get("/hello", (req, res) => 
         {
             res.StatusCode = 404;
         });
