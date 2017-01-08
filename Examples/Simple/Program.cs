@@ -16,6 +16,8 @@ class Program
         {
             res.Html(File.ReadAllText("Sample.html"));
         });
+        server.StaticFiles("/files", "");
+        server.StaticFiles("/bogus", "");
         server.Run();
     }
 }

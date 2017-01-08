@@ -42,6 +42,8 @@ host.Post(string path, Func<AntsyRequest, AntsyResponse, Task>);
 host.Post(string path, Action<AntsyRequest, AntsyResponse>);
 host.Delete(string path, Func<AntsyRequest, AntsyResponse, Task>);
 host.Delete(string path, Action<AntsyRequest, AntsyResponse>);
+//folderRoot is relative to the application directory.
+host.StaticFiles(string path, string folderRoot);
 ```
 
 ##### Request & Response

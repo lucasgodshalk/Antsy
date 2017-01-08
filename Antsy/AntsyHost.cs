@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Threading;
+using Microsoft.Extensions.FileProviders;
 
 namespace Antsy
 {
@@ -20,6 +21,7 @@ namespace Antsy
         private List<Tuple<string, Func<AntsyRequest, AntsyResponse, Task>>> getList = new List<Tuple<string, Func<AntsyRequest, AntsyResponse, Task>>>();
         private List<Tuple<string, Func<AntsyRequest, AntsyResponse, Task>>> postList = new List<Tuple<string, Func<AntsyRequest, AntsyResponse, Task>>>();
         private List<Tuple<string, Func<AntsyRequest, AntsyResponse, Task>>> deleteList = new List<Tuple<string, Func<AntsyRequest, AntsyResponse, Task>>>();
+        private List<Tuple<string, string>> staticFileList = new List<Tuple<string, string>>();
 
         private IWebHostBuilder _builder;
 
@@ -93,6 +95,17 @@ namespace Antsy
             deleteList.Add(Tuple.Create(path, del));
         }
 
+        /// <summary>
+        /// Serve files that are located in the root folder that align with the path.
+        /// </summary>
+        public void StaticFiles(string pathRoot, string folderRoot)
+        {
+            staticFileList.Add(Tuple.Create(pathRoot, folderRoot));
+        }
+
+        /// <summary>
+        /// Starts the server and blocks the current thread.
+        /// </summary>
         public void Run()
         {
             var host = _builder.Build();
@@ -106,6 +119,15 @@ namespace Antsy
 
         private void Configure(IApplicationBuilder app)
         {
+            foreach (var item in staticFileList)
+            {
+                app.UseStaticFiles(new StaticFileOptions()
+                {
+                    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), item.Item2)),
+                    RequestPath = new PathString(item.Item1)
+                });
+            }
+
             var routeBuilder = new RouteBuilder(app);
             LoadRoutes(routeBuilder.MapGet, getList);
             LoadRoutes(routeBuilder.MapPost, postList);
