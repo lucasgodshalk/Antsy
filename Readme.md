@@ -1,6 +1,6 @@
 ﻿# Antsy Web Framework
 
-This is a web framework for people who just want to get going. It sacrifices most of the tools that
+This is a .NET web framework for people who just want to get going. It sacrifices most of the tools that
 heavier-duty frameworks include all on the altar of keeping code to a minimum. 
 
 Here's the obligatory Hello World:

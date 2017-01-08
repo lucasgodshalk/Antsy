@@ -65,6 +65,23 @@ namespace Antsy
             _response.Body.Write(bytes, 0, bytes.Length);
         }
 
+        public void Html(string html)
+        {
+            _response.ContentType = "text/html";
+
+            if (string.IsNullOrEmpty(html))
+            {
+                _response.StatusCode = 204;
+                return;
+            }
+
+            var bytes = Encoding.UTF8.GetBytes(html);
+
+            _response.StatusCode = 200;
+            _response.ContentLength = bytes.Length;
+            _response.Body.Write(bytes, 0, bytes.Length);
+        }
+
         public override Stream Body
         {
             get
