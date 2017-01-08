@@ -106,29 +106,21 @@ namespace Antsy
         private void Configure(IApplicationBuilder app)
         {
             var routeBuilder = new RouteBuilder(app);
-            foreach (var item in getList)
-            {
-                routeBuilder.MapGet(item.Item1, new RequestDelegate(context => 
-                {
-                    return item.Item2(new AntsyRequest(context.Request), new AntsyResponse(context.Response));
-                }));
-            }
-            foreach (var item in postList)
-            {
-                routeBuilder.MapPost(item.Item1, new RequestDelegate(context =>
-                {
-                    return item.Item2(new AntsyRequest(context.Request), new AntsyResponse(context.Response));
-                }));
-            }
-            foreach (var item in deleteList)
-            {
-                routeBuilder.MapDelete(item.Item1, new RequestDelegate(context =>
-                {
-                    return item.Item2(new AntsyRequest(context.Request), new AntsyResponse(context.Response));
-                }));
-            }
-            routeBuilder.MapGet("path", new RequestDelegate(context => Task.FromResult(0)));
+            LoadRoutes(routeBuilder.MapGet, getList);
+            LoadRoutes(routeBuilder.MapPost, postList);
+            LoadRoutes(routeBuilder.MapDelete, deleteList);
             app.UseRouter(routeBuilder.Build());
+        }
+
+        private void LoadRoutes(Func<string, RequestDelegate, IRouteBuilder> map, List<Tuple<string, Func<AntsyRequest, AntsyResponse, Task>>> list)
+        {
+            foreach (var item in list)
+            {
+                map(item.Item1, new RequestDelegate(context =>
+                {
+                    return item.Item2(new AntsyRequest(context.Request), new AntsyResponse(context.Response));
+                }));
+            }
         }
     }
 
