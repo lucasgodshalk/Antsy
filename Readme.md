@@ -14,9 +14,51 @@ app.Run();
 ```
 
 Antsy wraps [ASP.NET Core](https://www.asp.net/core) so that it doesn't reinvent the wheel,
-but it's real heritage is [Express JS](http://expressjs.com/).
- 
+but its real heritage is [Express JS](http://expressjs.com/).
+
 The name is a bit of a rib at [Nancy](http://nancyfx.org/). If this actually becomes popular, my sincerest appologies
 to the Nancy maintainers. This was both entirely avoidable, and my fault.
 
-MIT License
+### API
+
+##### Constructor
+
+```csharp
+new AntsyHost(int port = 80);
+```
+
+##### Methods (AntsyHost)
+
+The path variable should follow asp.net [routing rules](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/routing).
+
+```csharp
+//Async or non-async, your choice.
+host.Get(string path, Func<AntsyRequest, AntsyResponse, Task>);
+host.Get(string path, Action<AntsyRequest, AntsyResponse>);
+host.Post(string path, Func<AntsyRequest, AntsyResponse, Task>);
+host.Post(string path, Action<AntsyRequest, AntsyResponse>);
+host.Delete(string path, Func<AntsyRequest, AntsyResponse, Task>);
+host.Delete(string path, Action<AntsyRequest, AntsyResponse>);
+```
+
+##### Request & Response
+
+The ```req``` and ```res``` are pretty much the standard ASP.NET 
+[HttpRequest](https://docs.microsoft.com/en-us/aspnet/core/api/microsoft.aspnetcore.http.httprequest#Microsoft_AspNetCore_Http_HttpRequest)
+and 
+[HttpResponse](https://docs.microsoft.com/en-us/aspnet/core/api/microsoft.aspnetcore.http.httpresponse#Microsoft_AspNetCore_Http_HttpResponse)
+objects,
+but gain helper methods to make them line up more with the Express JS API.
+
+The helper methods on the response object are:
+```csharp
+//Accepts either a POCO or a string.
+res.Json(object obj);
+res.Text(string text);
+res.Html(string html);
+```
+These helper methods just make sure the response is properly formatted (Content-Type, and friends).
+
+### License
+
+MIT
