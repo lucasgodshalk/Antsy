@@ -7,11 +7,13 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using System.Threading;
 
 namespace Antsy
 {
     /// <summary>
-    /// For those who want to get started.
+    /// For those who want are eager to get going.
     /// </summary>
     public class AntsyHost
     {
@@ -24,6 +26,30 @@ namespace Antsy
                 .UseUrls($"http://*:{port}")
                 .ConfigureServices(ConfigureServices)
                 .Configure(Configure);
+        }
+
+        /// <summary>
+        /// Handle a GET request at the given path.
+        /// </summary>
+        public void Get(string path, Action<AntsyRequest, AntsyResponse> del)
+        {
+
+        }
+
+        /// <summary>
+        /// Handle a POST request at the given path.
+        /// </summary>
+        public void Post(string path, Action<AntsyRequest, AntsyResponse> del)
+        {
+
+        }
+
+        /// <summary>
+        /// Handle a DELETE request at the given path.
+        /// </summary>
+        public void Delete(string path, Action<AntsyRequest, AntsyResponse> del)
+        {
+
         }
 
         public void Run()
@@ -44,4 +70,5 @@ namespace Antsy
             app.UseRouter(routeBuilder.Build());
         }
     }
+
 }
