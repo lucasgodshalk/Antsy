@@ -62,6 +62,7 @@ res.Json(object obj);
 res.Text(string text);
 res.Html(string html);
 res.File(string filepath);
+res.File(string filename, Stream filestream);
 ```
 These helper methods just make sure the response is properly formatted (Content-Type, and friends).
 

@@ -18,6 +18,7 @@ namespace Antsy
             _request = request;
         }
 
+        #region HttpRequest
         public override Stream Body
         {
             get
@@ -220,5 +221,6 @@ namespace Antsy
         {
             throw new NotImplementedException();
         }
+        #endregion
     }
 }

@@ -67,38 +67,36 @@ namespace Antsy
 
         public void Html(string html)
         {
+            Text(html);
             _response.ContentType = "text/html";
-
-            if (string.IsNullOrEmpty(html))
-            {
-                _response.StatusCode = 204;
-                return;
-            }
-
-            var bytes = Encoding.UTF8.GetBytes(html);
-
-            _response.StatusCode = 200;
-            _response.ContentLength = bytes.Length;
-            _response.Body.Write(bytes, 0, bytes.Length);
         }
 
-        public void File(string filename)
+        public void File(string filename, Stream filecontent)
         {
-            FileInfo fileInfo = new FileInfo(Path.Combine(Directory.GetCurrentDirectory(), filename));
+            _response.StatusCode = 200;
+            _response.ContentType = "application/octet-stream";
+            _response.Headers.Add("Content-Disposition", "attachment; filename=" + filename);
+            _response.ContentLength = filecontent.Length;
+            filecontent.CopyTo(_response.Body);
+        }
+
+        public void File(string filepath)
+        {
+            FileInfo fileInfo = new FileInfo(Path.Combine(Directory.GetCurrentDirectory(), filepath));
             if (fileInfo.Exists)
             {
-                _response.ContentType = "application/octet-stream";
-                _response.ContentLength = fileInfo.Length;
-                _response.Headers.Add("Content-Disposition", "attachment; filename=" + fileInfo.Name);
-
-                var bytes = System.IO.File.ReadAllBytes(filename);
-                _response.StatusCode = 200;
-                _response.ContentLength = bytes.Length;
-                _response.Body.Write(bytes, 0, bytes.Length);
-                
+                using (var fs = System.IO.File.OpenRead(fileInfo.FullName))
+                {
+                    File(fileInfo.Name, fs);
+                }
+            }
+            else
+            {
+                throw new FileNotFoundException(fileInfo.FullName);
             }
         }
 
+        #region HttpResponse
         public override Stream Body
         {
             get
@@ -193,5 +191,7 @@ namespace Antsy
         {
             _response.Redirect(location, permanent);
         }
+        #endregion
+
     }
 }
