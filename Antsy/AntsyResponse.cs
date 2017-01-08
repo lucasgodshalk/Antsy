@@ -82,6 +82,23 @@ namespace Antsy
             _response.Body.Write(bytes, 0, bytes.Length);
         }
 
+        public void File(string filename)
+        {
+            FileInfo fileInfo = new FileInfo(Path.Combine(Directory.GetCurrentDirectory(), filename));
+            if (fileInfo.Exists)
+            {
+                _response.ContentType = "application/octet-stream";
+                _response.ContentLength = fileInfo.Length;
+                _response.Headers.Add("Content-Disposition", "attachment; filename=" + fileInfo.Name);
+
+                var bytes = System.IO.File.ReadAllBytes(filename);
+                _response.StatusCode = 200;
+                _response.ContentLength = bytes.Length;
+                _response.Body.Write(bytes, 0, bytes.Length);
+                
+            }
+        }
+
         public override Stream Body
         {
             get

@@ -14,7 +14,7 @@ class Program
         });
         server.Get("", (req, res) =>
         {
-            res.Html(File.ReadAllText("Sample.html"));
+            res.File("image.jpg");
         });
         server.StaticFiles("/files", ""); //Serves all files in the application directory.
         server.Run();
