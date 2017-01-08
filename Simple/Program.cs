@@ -1,6 +1,7 @@
 ﻿using System;
 using Antsy;
 using System.Threading.Tasks;
+using System.IO;
 
 class Program
 {
@@ -10,6 +11,10 @@ class Program
         server.Get("/hello", (req, res) => 
         {
             res.Text("Hello World!");
+        });
+        server.Get("", (req, res) =>
+        {
+            res.Html(File.ReadAllText("Sample.html"));
         });
         server.Run();
     }

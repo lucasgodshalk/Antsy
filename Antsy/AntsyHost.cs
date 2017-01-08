@@ -26,6 +26,7 @@ namespace Antsy
         public AntsyHost(int port)
         {
             _builder = new WebHostBuilder()
+                .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseKestrel()
                 .UseUrls($"http://*:{port}")
                 .ConfigureServices(ConfigureServices)
