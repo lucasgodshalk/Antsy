@@ -2,6 +2,13 @@
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" />
   <PropertyGroup>
     <TargetFramework>netstandard1.4</TargetFramework>
+    <PackageId>Antsy.NET</PackageId>
+    <PackageVersion>1.0.0</PackageVersion>
+    <Authors>Lucas Godshalk</Authors>
+    <Description>A simple web framework for .NET inspired by Express JS</Description>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageReleaseNotes>First release</PackageReleaseNotes>
+    <Copyright>Copyright 2016 (c) Lucas Godshalk.</Copyright>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="**\*.cs" />

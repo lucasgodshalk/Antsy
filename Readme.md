@@ -17,7 +17,10 @@ Antsy wraps [ASP.NET Core](https://www.asp.net/core) so that it doesn't reinvent
 but its real heritage is [Express JS](http://expressjs.com/).
 
 The name is a bit of a rib at [Nancy](http://nancyfx.org/). If this actually becomes popular, my sincerest appologies
-to the Nancy maintainers. This was both entirely avoidable, and my fault.
+to the Nancy maintainers. Any name confusion was both entirely avoidable, and my fault.
+
+Please for all that is holy, do not use this in production. This should be considered a version 1.0 library.
+Admittedly, because it leans heavily on aspnet as the core this framework should be relatively robust.
 
 ### API
 
