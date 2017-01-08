@@ -9,7 +9,7 @@ class Program
         AntsyHost server = new AntsyHost(8000);
         server.Get("/hello", (req, res) => 
         {
-            res.StatusCode = 404;
+            res.Text("Hello World!");
         });
         server.Run();
     }
