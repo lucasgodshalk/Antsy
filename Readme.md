@@ -1,9 +1,9 @@
 ﻿# Antsy Web Framework
 
-This is a .NET web framework for people who just want to get going. Most of the tools that
-heavy-duty frameworks include are sacrificed in order to keep it clean. 
+This is a .NET web framework for people who just want to get going. Get the speed of aspnet, get the
+ minimalism of express, what's not to like?
 
-Here's the obligatory Hello World:
+The obligatory Hello World:
 ```csharp
 var app = new AntsyHost(port: 80);
 app.Get("/hello", (req, res) => 
@@ -14,13 +14,19 @@ app.Run();
 ```
 
 Antsy wraps [ASP.NET Core](https://www.asp.net/core) so that it doesn't reinvent the wheel,
-but its real heritage is [Express JS](http://expressjs.com/).
+but its real inspiration is [Express JS](http://expressjs.com/).
 
 The name is a bit of a rib at [Nancy](http://nancyfx.org/). If this actually becomes popular, my sincerest appologies
 to the Nancy maintainers. Any name confusion was both entirely avoidable, and my fault.
 
-This should be considered a version 1.0 library. Because it leans heavily on aspnet this framework 
+This a version 1.0 library. Because it leans heavily on aspnet this framework 
 should theoretically be relatively robust, but no guarantees.
+
+
+Nuget:
+```
+install-package antsy
+```
 
 ### API
 
