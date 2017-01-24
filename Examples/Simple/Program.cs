@@ -12,6 +12,15 @@ class Program
         {
             res.Text("Hello World!");
         });
+        server.Get("/hello/json", (req, res) =>
+        {
+            res.Json(new
+            {
+                id = 5,
+                name = "Sue",
+                position = "engineer"
+            });
+        });
         server.Get("", (req, res) =>
         {
             res.File("image.jpg");
