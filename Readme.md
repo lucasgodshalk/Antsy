@@ -3,14 +3,22 @@
 This is a .NET web framework for people who just want to get going. Get the speed of aspnet, get the
  minimalism of express, what's not to like?
 
-The obligatory Hello World:
+The obligatory hello world.
 ```csharp
-var app = new AntsyHost(port: 80);
-app.Get("/hello", (req, res) => 
+using Antsy;
+
+class Program
 {
-	res.Text("Hello World!");
-});
-app.Run();
+    static void Main(string[] args)
+    {
+        var host = new AntsyHost(port: 80);
+        host.Get("/hello", (req, res) =>
+        {
+            res.Text("hello world");
+        });
+        host.Run();
+    }
+}
 ```
 
 Antsy wraps [ASP.NET Core](https://www.asp.net/core) so that it doesn't reinvent the wheel,
