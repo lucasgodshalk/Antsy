@@ -20,7 +20,7 @@ The name is a bit of a rib at [Nancy](http://nancyfx.org/). If this actually bec
 to the Nancy maintainers. Any name confusion was both entirely avoidable, and my fault.
 
 This should be considered a version 1.0 library. Because it leans heavily on aspnet this framework 
-should theoretically be relatively robust, but please for all that is holy do not use this in production.
+should theoretically be relatively robust, but no guarantees.
 
 ### API
 
@@ -42,7 +42,7 @@ host.Post(string path, Func<AntsyRequest, AntsyResponse, Task>);
 host.Post(string path, Action<AntsyRequest, AntsyResponse>);
 host.Delete(string path, Func<AntsyRequest, AntsyResponse, Task>);
 host.Delete(string path, Action<AntsyRequest, AntsyResponse>);
-//folderRoot is relative to the application directory.
+//folderRoot is relative to the current directory.
 host.StaticFiles(string path, string folderRoot);
 ```
 
@@ -53,7 +53,7 @@ The ```req``` and ```res``` are pretty much the standard ASP.NET
 and 
 [HttpResponse](https://docs.microsoft.com/en-us/aspnet/core/api/microsoft.aspnetcore.http.httpresponse#Microsoft_AspNetCore_Http_HttpResponse)
 objects,
-but gain helper methods to make them line up more with the Express JS API.
+but gain helper methods to make them line up more with the Express API.
 
 The helper methods on the response object are:
 ```csharp
@@ -61,10 +61,11 @@ The helper methods on the response object are:
 res.Json(object obj);
 res.Text(string text);
 res.Html(string html);
+//Serves the file as an attachment.
 res.File(string filepath);
 res.File(string filename, Stream filestream);
 ```
-These helper methods just make sure the response is properly formatted (Content-Type, and friends).
+These helper methods just make sure the response headers are properly formatted (Content-Type, and friends).
 
 ### License
 
