@@ -33,6 +33,7 @@ should theoretically be relatively robust, but no guarantees.
 
 Nuget:
 ```
+install-package microsoft.aspnetcore.http.abstractions
 install-package antsy
 ```
 
