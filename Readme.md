@@ -29,7 +29,7 @@ to the Nancy maintainers. Any name confusion was both entirely avoidable, and my
 
 This a version 1.0 library. Because it leans heavily on aspnet this framework 
 should theoretically be relatively robust, but no guarantees. Note that the host will not listen for https
-connections (Just stick your favorite reverse proxy in front and do ssl termination there).
+connections (just stick your favorite reverse proxy in front and do https termination there).
 
 
 Nuget:
