@@ -1,9 +1,9 @@
 ﻿# Antsy Web Framework
 
-This is a .NET web framework for people who just want to get going. Get the speed of aspnet, get the
- minimalism of express, what's not to like?
+This is a web framework for people who just want to get going. This is a minimalist framework, 
+most of the 'enterprise' features have been sacrificed in order to have a simple api. 
 
-The obligatory hello world.
+As a demonstration, here's the obligatory hello world:
 ```csharp
 using Antsy;
 
@@ -22,7 +22,7 @@ class Program
 ```
 
 Antsy wraps [ASP.NET Core](https://www.asp.net/core) so that it doesn't reinvent the wheel,
-but its real inspiration is [Express JS](http://expressjs.com/).
+but the api surface is inspired by [Express JS](http://expressjs.com/).
 
 The name is a bit of a rib at [Nancy](http://nancyfx.org/). If this actually becomes popular, my sincerest appologies
 to the Nancy maintainers. Any name confusion was both entirely avoidable, and my fault.
@@ -62,7 +62,7 @@ host.StaticFiles(string path, string folderRoot);
 
 ##### Request & Response
 
-The ```req``` and ```res``` are pretty much the standard ASP.NET 
+The ```req``` and ```res``` are the standard ASP.NET 
 [HttpRequest](https://docs.microsoft.com/en-us/aspnet/core/api/microsoft.aspnetcore.http.httprequest#Microsoft_AspNetCore_Http_HttpRequest)
 and 
 [HttpResponse](https://docs.microsoft.com/en-us/aspnet/core/api/microsoft.aspnetcore.http.httpresponse#Microsoft_AspNetCore_Http_HttpResponse)
