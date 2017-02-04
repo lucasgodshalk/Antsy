@@ -23,7 +23,7 @@ class Program
         });
         server.Get("", (req, res) =>
         {
-            res.File("image.jpg");
+            res.Download("image.jpg");
         });
         server.StaticFiles("/files", ""); //Serves all files in the application directory.
         server.Run();

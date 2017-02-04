@@ -17,6 +17,9 @@ namespace Antsy
             _response = response;
         }
 
+        /// <summary>
+        /// Formats a response as json. The content can either be a string or an object.
+        /// </summary>
         public void Json(object content)
         {
             _response.ContentType = "application/json";
@@ -48,6 +51,9 @@ namespace Antsy
             _response.Body.Write(bytes, 0, bytes.Length);
         }
 
+        /// <summary>
+        /// Formats the response as text.
+        /// </summary>
         public void Text(string text)
         {
             _response.ContentType = "text/plain";
@@ -65,13 +71,19 @@ namespace Antsy
             _response.Body.Write(bytes, 0, bytes.Length);
         }
 
+        /// <summary>
+        /// Formats the response as html.
+        /// </summary>
         public void Html(string html)
         {
             Text(html);
             _response.ContentType = "text/html";
         }
 
-        public void File(string filename, Stream filecontent)
+        /// <summary>
+        /// Formats the response as a file to download.
+        /// </summary>
+        public void Download(string filename, Stream filecontent)
         {
             _response.StatusCode = 200;
             _response.ContentType = "application/octet-stream";
@@ -80,14 +92,17 @@ namespace Antsy
             filecontent.CopyTo(_response.Body);
         }
 
-        public void File(string filepath)
+        /// <summary>
+        /// Formats the response as a file to download.
+        /// </summary>
+        public void Download(string filepath)
         {
             FileInfo fileInfo = new FileInfo(Path.Combine(Directory.GetCurrentDirectory(), filepath));
             if (fileInfo.Exists)
             {
                 using (var fs = System.IO.File.OpenRead(fileInfo.FullName))
                 {
-                    File(fileInfo.Name, fs);
+                    Download(fileInfo.Name, fs);
                 }
             }
             else

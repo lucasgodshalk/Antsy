@@ -9,7 +9,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Antsy" Version="1.0.2" />
+    <PackageReference Include="Antsy" Version="1.0.3" />
     <PackageReference Include="microsoft.aspnetcore.http.abstractions" Version="1.1.0" />
   </ItemGroup>
 </Project>
