@@ -28,7 +28,8 @@ The name is a bit of a rib at [Nancy](http://nancyfx.org/). If this actually bec
 to the Nancy maintainers. Any name confusion was both entirely avoidable, and my fault.
 
 This a version 1.0 library. Because it leans heavily on aspnet this framework 
-should theoretically be relatively robust, but no guarantees.
+should theoretically be relatively robust, but no guarantees. Note that the host will not listen for https
+connections (Just stick your favorite reverse proxy in front and do ssl termination there).
 
 
 Nuget:
