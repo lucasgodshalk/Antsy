@@ -53,7 +53,7 @@ new AntsyHost(int port = 80);
 The path variable should follow asp.net [routing rules](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/routing).
 
 ```csharp
-//Async or non-async, your choice.
+//Switch between async and non-async seamlessly.
 host.Get(string path, Func<AntsyRequest, AntsyResponse, Task>);
 host.Get(string path, Action<AntsyRequest, AntsyResponse>);
 host.Post(string path, Func<AntsyRequest, AntsyResponse, Task>);
