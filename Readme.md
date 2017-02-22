@@ -32,6 +32,8 @@ should theoretically be relatively robust, but no guarantees. Note that the host
 connections (just stick your favorite reverse proxy in front and do https termination there).
 
 
+Currently this only supports dotnet core projects, but I'd like to add full framework support. I just need to figure out how to wrangle msbuild.
+
 Nuget:
 ```
 install-package microsoft.aspnetcore.http.abstractions
