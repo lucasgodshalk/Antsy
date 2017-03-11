@@ -34,9 +34,8 @@ connections (just stick your favorite reverse proxy in front and do https termin
 
 Currently this only supports dotnet core projects, but I'd like to add full framework support. I just need to figure out how to wrangle msbuild.
 
-Nuget:
+[Nuget](https://www.nuget.org/packages/Antsy/):
 ```
-install-package microsoft.aspnetcore.http.abstractions
 install-package antsy
 ```
 
