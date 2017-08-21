@@ -1,6 +1,6 @@
 ﻿# Antsy Web Framework
 
-This is a simple web framework for people who just want to get going with as few layers as possible. Dependency Injection? Model binding? Authentication? Forget it.
+This is a simple web framework for people who just want to get going with as few layers as possible.
 
 To get started create a new console application and add via
 [nuget](https://www.nuget.org/packages/Antsy/):
