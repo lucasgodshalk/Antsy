@@ -1,7 +1,7 @@
 ﻿using System;
-using Antsy;
 using System.Threading.Tasks;
 using System.IO;
+using Antsy;
 
 class Program
 {
@@ -25,7 +25,9 @@ class Program
         {
             res.Download("image.jpg");
         });
-        server.StaticFiles("/files", ""); //Serves all files in the application directory.
+        //Serves all files in the application directory.
+        //Navigate to /files/sample.html.
+        server.StaticFiles("/files", ""); 
         server.Run();
     }
 }
