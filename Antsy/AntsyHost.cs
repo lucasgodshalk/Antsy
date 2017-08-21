@@ -30,6 +30,9 @@ namespace Antsy
         private readonly List<Tuple<string, string>> staticFileList = 
             new List<Tuple<string, string>>();
 
+        private readonly List<Func<RequestDelegate, RequestDelegate>> middlewareList =
+            new List<Func<RequestDelegate, RequestDelegate>>();
+
         private readonly IWebHostBuilder _builder;
 
         public AntsyHost(int port)
@@ -119,6 +122,14 @@ namespace Antsy
             host.Run();
         }
 
+        /// <summary>
+        /// Add middleware to pipeline. See <see cref="IApplicationBuilder.Use(Func{RequestDelegate, RequestDelegate})" />
+        /// </summary>
+        public void Use(Func<RequestDelegate, RequestDelegate> middleware)
+        {
+            middlewareList.Add(middleware);
+        }
+
         private void ConfigureServices(IServiceCollection services)
         {
             services.AddRouting();
@@ -126,6 +137,11 @@ namespace Antsy
 
         private void Configure(IApplicationBuilder app)
         {
+            foreach (var middleware in middlewareList)
+            {
+                app.Use(middleware);
+            }
+            
             foreach (var item in staticFileList)
             {
                 app.UseStaticFiles(new StaticFileOptions()
