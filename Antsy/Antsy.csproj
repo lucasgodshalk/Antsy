@@ -3,13 +3,14 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>Antsy</PackageId>
     <Title>Antsy Web Framework</Title>
-    <PackageVersion>1.0.5</PackageVersion>
+    <PackageVersion>1.0.6</PackageVersion>
     <Authors>Lucas Godshalk</Authors>
     <PackageLicenseUrl>https://github.com/TrexinanF14/Antsy/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/TrexinanF14/Antsy</PackageProjectUrl>
     <Description>A simple web framework for .NET inspired by Express JS</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Copyright>Copyright 2017 (c) Lucas Godshalk.</Copyright>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.0.0" />

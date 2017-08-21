@@ -1,9 +1,17 @@
 ﻿# Antsy Web Framework
 
-This is a web framework for people who just want to get going. This is a minimalist framework, 
-most of the 'enterprise' features have been sacrificed in order to have a simple api. 
+This is a simple web framework for people who just want to get going with as few layers as possible. Dependency Injection? Model binding? Authentication? Forget it.
 
-As a demonstration, here's the obligatory hello world:
+To get started create a new console application and add via
+[nuget](https://www.nuget.org/packages/Antsy/):
+```
+install-package antsy
+[or]
+dotnet add package antsy
+```
+
+Then use this to start up your web app:
+
 ```csharp
 using Antsy;
 
@@ -11,12 +19,13 @@ class Program
 {
     static void Main(string[] args)
     {
-        var host = new AntsyHost(port: 80);
+        var host = new AntsyHost(port: 8000);
         host.Get("/hello", (req, res) =>
         {
             res.Text("hello world");
         });
         host.Run();
+        //Hit localhost:8000/hello
     }
 }
 ```
@@ -28,16 +37,11 @@ The name is a bit of a rib at [Nancy](http://nancyfx.org/). If this actually bec
 to the Nancy maintainers. Any name confusion was both entirely avoidable, and my fault.
 
 This a version 1.0 library. Because it leans heavily on aspnet this framework 
-should theoretically be relatively robust, but no guarantees. Note that the host will not listen for https
-connections (just stick your favorite reverse proxy in front and do https termination there).
+should theoretically be relatively robust. Note that the host will not listen for https connections (just stick your favorite reverse proxy in front and do https termination there).
 
 
-Currently this only supports dotnet core projects, but I'd like to add full framework support. I just need to figure out how to wrangle msbuild.
+This project targets [netstandard 2.0](https://docs.microsoft.com/en-us/dotnet/standard/net-standard) so if you're running dotnet core or a modern full framework this library should work for you.
 
-[Nuget](https://www.nuget.org/packages/Antsy/):
-```
-install-package antsy
-```
 
 ### API
 
@@ -52,7 +56,7 @@ new AntsyHost(int port = 80);
 The path variable should follow asp.net [routing rules](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/routing).
 
 ```csharp
-//Switch between async and non-async seamlessly.
+//Switch between sync and async. Heaven help you if your sync call blocks.
 host.Get(string path, Func<AntsyRequest, AntsyResponse, Task>);
 host.Get(string path, Action<AntsyRequest, AntsyResponse>);
 host.Post(string path, Func<AntsyRequest, AntsyResponse, Task>);

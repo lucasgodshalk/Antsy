@@ -22,6 +22,11 @@ namespace Antsy
         /// </summary>
         public void Json(object content)
         {
+            if (content == null) 
+            {
+                throw new ArgumentNullException(nameof(content));
+            }
+
             _response.ContentType = "application/json";
 
             string contentStr;
@@ -112,6 +117,9 @@ namespace Antsy
         }
 
         #region HttpResponse
+        /// <summary>
+        /// Gets or sets the response body.
+        /// </summary>
         public override Stream Body
         {
             get
@@ -124,6 +132,9 @@ namespace Antsy
             }
         }
 
+        /// <summary>
+        /// Gets or sets the value of the Content-Length response header.
+        /// </summary>
         public override long? ContentLength
         {
             get
@@ -136,6 +147,9 @@ namespace Antsy
             }
         }
 
+        /// <summary>
+        /// Gets or sets the value for the Content-Type response header.
+        /// </summary>
         public override string ContentType
         {
             get
@@ -148,6 +162,9 @@ namespace Antsy
             }
         }
 
+        /// <summary>
+        /// Gets an object that can be used to manage cookies for this response.
+        /// </summary>
         public override IResponseCookies Cookies
         {
             get
@@ -156,6 +173,9 @@ namespace Antsy
             }
         }
 
+        /// <summary>
+        /// Gets a value indicating whether response headers have been sent to the client.
+        /// </summary>
         public override bool HasStarted
         {
             get
@@ -164,6 +184,9 @@ namespace Antsy
             }
         }
 
+        /// <summary>
+        /// Gets the response headers.
+        /// </summary>
         public override IHeaderDictionary Headers
         {
             get
@@ -172,6 +195,9 @@ namespace Antsy
             }
         }
 
+        /// <summary>
+        /// Gets the <see cref="Microsoft.AspNetCore.Http.HttpContext"/> for this response.
+        /// </summary>
         public override HttpContext HttpContext
         {
             get
@@ -180,6 +206,9 @@ namespace Antsy
             }
         }
 
+        /// <summary>
+        /// Gets or sets the HTTP status code.
+        /// </summary>
         public override int StatusCode
         {
             get
@@ -192,16 +221,31 @@ namespace Antsy
             }
         }
 
+        /// <summary>
+        /// Adds a delegate to be invoked after the response has finished being sent to the client.
+        /// </summary>
+        /// <param name="callback">The delegate to invoke. Supplies the state object as the argument.</param>
+        /// <param name="state">A state object to capture and pass back to the delegate.</param>
         public override void OnCompleted(Func<object, Task> callback, object state)
         {
             _response.OnCompleted(callback, state);
         }
 
+        /// <summary>
+        /// Adds a delegate to be invoked just before response headers will be sent to the client.
+        /// </summary>
+        /// <param name="callback">The delegate to invoke. Supplies the state object as the argument.</param>
+        /// <param name="state">A state object to capture and pass back to the delegate.</param>
         public override void OnStarting(Func<object, Task> callback, object state)
         {
             _response.OnStarting(callback, state);
         }
 
+        /// <summary>
+        /// Returns a redirect response (HTTP 301 or HTTP 302) to the client.
+        /// </summary>
+        /// <param name="location">The url to redirect the client to.</param>
+        /// <param name="permanent">True if redirect is permanent (301).</param>
         public override void Redirect(string location, bool permanent)
         {
             _response.Redirect(location, permanent);

@@ -19,19 +19,24 @@ namespace Antsy
         }
 
         #region HttpRequest
+        /// <summary>
+        /// Gets or sets the RequestBody stream.
+        /// </summary>
         public override Stream Body
         {
             get
             {
                 return _request.Body;
             }
-
             set
             {
                 _request.Body = value;
             }
         }
 
+        /// <summary>
+        /// Gets or sets the Content=Length header.
+        /// </summary>
         public override long? ContentLength
         {
             get
@@ -45,6 +50,9 @@ namespace Antsy
             }
         }
 
+        /// <summary>
+        /// Gets or sets the Content-Type header.
+        /// </summary>
         public override string ContentType
         {
             get
@@ -58,6 +66,9 @@ namespace Antsy
             }
         }
 
+        /// <summary>
+        /// Gets the collection of Cookies for this request.
+        /// </summary>
         public override IRequestCookieCollection Cookies
         {
             get
@@ -71,19 +82,24 @@ namespace Antsy
             }
         }
 
+        /// <summary>
+        /// Gets or sets the request body as a form.
+        /// </summary>
         public override IFormCollection Form
         {
             get
             {
                 return _request.Form;
             }
-
             set
             {
                 _request.Form = value;
             }
         }
 
+        /// <summary>
+        /// Checks the content-type header for form types.
+        /// </summary>
         public override bool HasFormContentType
         {
             get
@@ -92,6 +108,9 @@ namespace Antsy
             }
         }
 
+        /// <summary>
+        /// Gets the request headers.
+        /// </summary>
         public override IHeaderDictionary Headers
         {
             get
@@ -100,6 +119,9 @@ namespace Antsy
             }
         }
 
+        /// <summary>
+        /// Gets or sets the Host header. May include the port.
+        /// </summary>
         public override HostString Host
         {
             get
@@ -113,6 +135,9 @@ namespace Antsy
             }
         }
 
+        /// <summary>
+        /// Gets the <see cref="Microsoft.AspNetCore.Http.HttpContext"/> for this request.
+        /// </summary>
         public override HttpContext HttpContext
         {
             get
@@ -121,6 +146,9 @@ namespace Antsy
             }
         }
 
+        /// <summary>
+        /// Returns true if the RequestScheme is https.
+        /// </summary>
         public override bool IsHttps
         {
             get
@@ -133,6 +161,9 @@ namespace Antsy
             }
         }
 
+        /// <summary>
+        /// Gets or sets the HTTP method.
+        /// </summary>
         public override string Method
         {
             get
@@ -145,6 +176,9 @@ namespace Antsy
             }
         }
 
+        /// <summary>
+        /// Gets or sets the request path from RequestPath.
+        /// </summary>
         public override PathString Path
         {
             get
@@ -157,6 +191,9 @@ namespace Antsy
             }
         }
 
+        /// <summary>
+        /// Gets or sets RequestPathBase
+        /// </summary>
         public override PathString PathBase
         {
             get
@@ -169,6 +206,9 @@ namespace Antsy
             }
         }
 
+        /// <summary>
+        /// Gets or sets RequestProtocol
+        /// </summary>
         public override string Protocol
         {
             get
@@ -181,6 +221,9 @@ namespace Antsy
             }
         }
 
+        /// <summary>
+        /// Gets the query value collection parsed from <see cref="QueryString" />
+        /// </summary>
         public override IQueryCollection Query
         {
             get
@@ -193,6 +236,9 @@ namespace Antsy
             }
         }
 
+        /// <summary>
+        /// Gets or sets the raw query string used to create the query collection in <see cref="Query"/>.
+        /// </summary>
         public override QueryString QueryString
         {
             get
@@ -205,6 +251,9 @@ namespace Antsy
             }
         }
 
+        /// <summary>
+        /// Gets or sets the HTTP request scheme.
+        /// </summary>
         public override string Scheme
         {
             get
@@ -217,9 +266,9 @@ namespace Antsy
             }
         }
 
-        public override Task<IFormCollection> ReadFormAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public async override Task<IFormCollection> ReadFormAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            throw new NotImplementedException();
+            return await _request.ReadFormAsync(cancellationToken); 
         }
         #endregion
     }

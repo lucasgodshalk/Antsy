@@ -18,12 +18,19 @@ namespace Antsy
     /// </summary>
     public class AntsyHost
     {
-        private List<Tuple<string, Func<AntsyRequest, AntsyResponse, Task>>> getList = new List<Tuple<string, Func<AntsyRequest, AntsyResponse, Task>>>();
-        private List<Tuple<string, Func<AntsyRequest, AntsyResponse, Task>>> postList = new List<Tuple<string, Func<AntsyRequest, AntsyResponse, Task>>>();
-        private List<Tuple<string, Func<AntsyRequest, AntsyResponse, Task>>> deleteList = new List<Tuple<string, Func<AntsyRequest, AntsyResponse, Task>>>();
-        private List<Tuple<string, string>> staticFileList = new List<Tuple<string, string>>();
+        private readonly List<Tuple<string, Func<AntsyRequest, AntsyResponse, Task>>> getList = 
+            new List<Tuple<string, Func<AntsyRequest, AntsyResponse, Task>>>();
 
-        private IWebHostBuilder _builder;
+        private readonly List<Tuple<string, Func<AntsyRequest, AntsyResponse, Task>>> postList = 
+            new List<Tuple<string, Func<AntsyRequest, AntsyResponse, Task>>>();
+
+        private readonly List<Tuple<string, Func<AntsyRequest, AntsyResponse, Task>>> deleteList = 
+            new List<Tuple<string, Func<AntsyRequest, AntsyResponse, Task>>>();
+
+        private readonly List<Tuple<string, string>> staticFileList = 
+            new List<Tuple<string, string>>();
+
+        private readonly IWebHostBuilder _builder;
 
         public AntsyHost(int port)
         {
@@ -43,7 +50,7 @@ namespace Antsy
             Get(path, (req, res) =>
             {
                 del(req, res);
-                return Task.FromResult(0);
+                return Task.CompletedTask;
             });
         }
 
@@ -63,7 +70,7 @@ namespace Antsy
             Post(path, (req, res) =>
             {
                 del(req, res);
-                return Task.FromResult(0);
+                return Task.CompletedTask;
             });
         }
 
@@ -83,7 +90,7 @@ namespace Antsy
             Delete(path, (req, res) =>
             {
                 del(req, res);
-                return Task.FromResult(0);
+                return Task.CompletedTask;
             });
         }
 
