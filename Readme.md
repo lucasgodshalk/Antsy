@@ -37,7 +37,7 @@ The name is a bit of a rib at [Nancy](http://nancyfx.org/). If this actually bec
 to the Nancy maintainers. Any name confusion was both entirely avoidable, and my fault.
 
 This a version 1.0 library. Because it leans heavily on aspnet this framework 
-should theoretically be relatively robust. Note that the host will not listen for https connections (just stick your favorite reverse proxy in front and do https termination there).
+should theoretically be relatively robust. Note that the host will not listen for https connections (just stick your favorite reverse proxy in front and do https termination there). All json model binding uses [Json.net](https://www.newtonsoft.com/json).
 
 
 This project targets [netstandard 2.0](https://docs.microsoft.com/en-us/dotnet/standard/net-standard) so if you're running dotnet core or a modern full framework this library should work for you.
@@ -76,11 +76,21 @@ and
 objects,
 but gain helper methods to make them line up more with the Express API.
 
-The helper methods on the response object are:
+Helper methods on the request object:
 ```csharp
-//Accepts either a POCO or a string.
+//Deserializes the body json to an object (using Json.net formatting).
+req.BodyJson<T>();
+//Returns the body as text.
+req.BodyText();
+```
+
+Helper methods on the response object:
+```csharp
+//Accepts either a POCO or a string. Formats response as json.
 res.Json(object obj);
+//Formats the response as text.
 res.Text(string text);
+//Formats the response as html.
 res.Html(string html);
 //Serves the file as an attachment.
 res.File(string filepath);
