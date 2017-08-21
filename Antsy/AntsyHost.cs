@@ -163,13 +163,14 @@ namespace Antsy
             foreach (var item in list)
             {
                 var path = item.Item1;
+                var del = item.Item2;
                 if (path.StartsWith("/"))
                 {
                     path = path.Remove(0, 1);
                 }
                 map(path, new RequestDelegate(context =>
                 {
-                    return item.Item2(new AntsyRequest(context.Request), new AntsyResponse(context.Response));
+                    return del(new AntsyRequest(context.Request), new AntsyResponse(context.Response));
                 }));
             }
         }
