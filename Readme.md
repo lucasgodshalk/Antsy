@@ -30,7 +30,7 @@ class Program
 }
 ```
 
-Antsy wraps [ASP.NET Core](https://www.asp.net/core) so that it doesn't reinvent the wheel,
+Antsy lets [ASP.NET Core](https://www.asp.net/core) do most of the heavy lifting so that it doesn't reinvent the wheel,
 but the api surface is inspired by [Express JS](http://expressjs.com/).
 
 The name is a bit of a rib at [Nancy](http://nancyfx.org/). If this actually becomes popular, my sincerest appologies
