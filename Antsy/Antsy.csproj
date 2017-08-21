@@ -3,7 +3,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>Antsy</PackageId>
     <Title>Antsy Web Framework</Title>
-    <PackageVersion>1.0.6</PackageVersion>
+    <PackageVersion>1.0.7</PackageVersion>
     <Authors>Lucas Godshalk</Authors>
     <PackageLicenseUrl>https://github.com/TrexinanF14/Antsy/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/TrexinanF14/Antsy</PackageProjectUrl>
@@ -11,6 +11,7 @@
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Copyright>Copyright 2017 (c) Lucas Godshalk.</Copyright>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.0.0" />
