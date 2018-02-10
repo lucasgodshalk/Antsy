@@ -1,18 +1,10 @@
 ﻿# Antsy Web Framework
 
-[![Build status](https://ci.appveyor.com/api/projects/status/vjdj2snfeh9b454u?svg=true)](https://ci.appveyor.com/project/TrexinanF14/antsy)
+[![Build status](https://ci.appveyor.com/api/projects/status/vjdj2snfeh9b454u?svg=true)](https://ci.appveyor.com/project/TrexinanF14/antsy) [![NuGet](https://img.shields.io/nuget/v/Antsy.svg)]()
 
 This is a simple web framework for people who just want to get going with as few lines as possible.
 
-To get started create a new console application and add via
-[nuget](https://www.nuget.org/packages/Antsy/):
-```
-install-package antsy
-[or]
-dotnet add package antsy
-```
-
-Then use this to start up your web app:
+Here is a simple example:
 
 ```csharp
 using Antsy;
@@ -38,7 +30,7 @@ but the api surface is inspired by [Express JS](http://expressjs.com/).
 The name is a bit of a rib at [Nancy](http://nancyfx.org/). If this actually becomes popular, my sincerest appologies
 to the Nancy maintainers. Any name confusion was both entirely avoidable, and my fault.
 
-This a version 1.0 library. Because it leans heavily on aspnet this framework 
+Because it leans heavily on aspnet this framework 
 should theoretically be relatively robust. Note that the host will not listen for https connections (just stick your favorite reverse proxy in front and do https termination there). All json model binding uses [Json.net](https://www.newtonsoft.com/json).
 
 
