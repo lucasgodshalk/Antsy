@@ -7,7 +7,7 @@ init:
   - cmd: git config --global core.autocrlf true
 before_build:
   - cmd: dotnet --version
-  - cmd: dotnet restore ./src/Antsy.cspoj --verbosity #
+  - cmd: dotnet restore ./src/Antsy.cspoj --verbosity m
 build_script:
   - cmd: dotnet publish ./src/Antsy.csproj
 deploy: off
