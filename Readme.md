@@ -86,9 +86,9 @@ res.Json(object obj);
 res.Text(string text);
 //Formats the response as html.
 res.Html(string html);
-//Serves the file as an attachment.
-res.File(string filepath);
-res.File(string filename, Stream filestream);
+//Serves the file as a download.
+res.Download(string filepath);
+res.Download(string filename, Stream filestream);
 //If I can wrangle it, I'd like to see something like res.Razor(string pageName, object model) in the future.
 ```
 These helper methods just make sure the response headers are properly formatted (Content-Type, and friends).
