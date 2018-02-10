@@ -9,5 +9,6 @@ before_build:
   - cmd: dotnet --version
   - cmd: dotnet restore ./src/Antsy.csproj --verbosity m
 build_script:
-  - cmd: dotnet publish ./src/Antsy.csproj
+  - cmd: dotnet build -c Release ./src/Antsy.csproj
+  - cmd: dotnet pack ./src/Antsy.csproj -c Release --output nupkgs
 deploy: off
