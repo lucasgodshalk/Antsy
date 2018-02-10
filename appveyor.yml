@@ -19,3 +19,4 @@ build_script:
 deploy: off
 artifacts:
   - path: '.\src\nupkgs\*.nupkg'
+  - path: '.\src\bin\Release\netstandard2.0\*.*'
