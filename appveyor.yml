@@ -5,6 +5,11 @@ branches:
   - master
 init:
   - cmd: git config --global core.autocrlf true
+dotnet_csproj:
+  patch: true
+  file: '**\*.csproj'
+  version: '{version}'
+  package_version: '{version}'
 before_build:
   - cmd: dotnet --version
   - cmd: dotnet restore ./src/Antsy.csproj --verbosity m
