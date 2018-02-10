@@ -9,10 +9,16 @@ using Newtonsoft.Json;
 
 namespace Antsy
 {
+  /// <summary>
+  /// Represents an incoming http request.
+  /// </summary>
   public class AntsyRequest : HttpRequest
   {
     private readonly HttpRequest _request;
 
+    /// <summary>
+    /// Creates a new request based on an existing <see cref="HttpRequest"/>
+    /// </summary>
     public AntsyRequest(HttpRequest request)
     {
       _request = request;
@@ -292,6 +298,9 @@ namespace Antsy
       }
     }
 
+    /// <summary>
+    /// Reads the request body if it is in a form.
+    /// </summary>
     public async override Task<IFormCollection> ReadFormAsync(CancellationToken cancellationToken = default(CancellationToken))
     {
       return await _request.ReadFormAsync(cancellationToken);

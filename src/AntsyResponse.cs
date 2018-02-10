@@ -8,10 +8,16 @@ using Newtonsoft.Json;
 
 namespace Antsy
 {
+  /// <summary>
+  /// the outgoing http response
+  /// </summary>
   public class AntsyResponse : HttpResponse
   {
     private readonly HttpResponse _response;
 
+    /// <summary>
+    /// Creates a new response based on an existing <see cref="HttpResponse"/>
+    /// </summary>
     public AntsyResponse(HttpResponse response)
     {
       _response = response;

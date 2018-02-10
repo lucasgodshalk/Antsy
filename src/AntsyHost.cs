@@ -35,6 +35,10 @@ namespace Antsy
 
         private readonly IWebHostBuilder _builder;
 
+        /// <summary>
+        /// Creates a new antsy host
+        /// </summary>
+        /// <param name="port">Port number to listen for requests on</param>
         public AntsyHost(int port)
         {
             _builder = new WebHostBuilder()
