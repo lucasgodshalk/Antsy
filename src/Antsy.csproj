@@ -3,7 +3,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>Antsy</PackageId>
     <Title>Antsy Web Framework</Title>
-    <PackageVersion>1.0.10</PackageVersion>
+    <PackageVersion>1.0.11</PackageVersion>
     <Authors>Lucas Godshalk</Authors>
     <PackageLicenseUrl>https://github.com/TrexinanF14/Antsy/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/TrexinanF14/Antsy</PackageProjectUrl>
