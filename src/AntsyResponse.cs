@@ -83,7 +83,7 @@ namespace Antsy
     }
 
     /// <summary>
-    /// Formats the response as html.
+    /// Formats the response as html. Can either be an html string or filepath.
     /// </summary>
     public void Html(string html)
     {
@@ -95,12 +95,19 @@ namespace Antsy
         return;
       }
 
-      var bytes = Encoding.UTF8.GetBytes(html);
+      byte[] bytes;
+      if (File.Exists(html))
+      {
+        bytes = File.ReadAllBytes(html);
+      }
+      else
+      {
+        bytes = Encoding.UTF8.GetBytes(html);
+      }
 
       _response.StatusCode = 200;
       _response.ContentLength = bytes.Length;
       _response.Body.Write(bytes, 0, bytes.Length);
-      Text(html);
     }
 
     /// <summary>

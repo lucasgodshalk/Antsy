@@ -84,7 +84,7 @@ Helper methods on the response object:
 res.Json(object obj);
 //Formats the response as text.
 res.Text(string text);
-//Formats the response as html.
+//Formats the response as html (string or file).
 res.Html(string html);
 //Serves the file as a download.
 res.Download(string filepath);
