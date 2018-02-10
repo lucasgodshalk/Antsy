@@ -1,6 +1,6 @@
 ﻿# Antsy Web Framework
 
-[![Build status](https://ci.appveyor.com/api/projects/status/vjdj2snfeh9b454u?svg=true)](https://ci.appveyor.com/project/TrexinanF14/antsy) [![NuGet](https://img.shields.io/nuget/v/Antsy.svg)]()
+[![Build status](https://ci.appveyor.com/api/projects/status/vjdj2snfeh9b454u?svg=true)](https://ci.appveyor.com/project/TrexinanF14/antsy) [![NuGet](https://img.shields.io/nuget/v/Antsy.svg)](https://www.nuget.org/packages/Antsy/)
 
 This is a simple web framework for people who just want to get going with as few lines as possible.
 
