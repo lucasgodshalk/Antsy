@@ -17,3 +17,5 @@ build_script:
   - cmd: dotnet build -c Release ./src/Antsy.csproj
   - cmd: dotnet pack ./src/Antsy.csproj -c Release --output nupkgs
 deploy: off
+artifacts:
+  - path: '.\src\nupkgs\*.nupkg'
