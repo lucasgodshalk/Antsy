@@ -1,5 +1,7 @@
 ﻿# Antsy Web Framework
 
+[![Build status](https://ci.appveyor.com/api/projects/status/vjdj2snfeh9b454u?svg=true)](https://ci.appveyor.com/project/TrexinanF14/antsy)
+
 This is a simple web framework for people who just want to get going with as few lines as possible.
 
 To get started create a new console application and add via
