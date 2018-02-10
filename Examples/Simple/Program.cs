@@ -21,6 +21,10 @@ class Program
                 position = "engineer"
             });
         });
+        server.Get("/html", (req, res) => 
+        {
+            res.Html("Sample.html");
+        });
         server.Get("/somefile", (req, res) =>
         {
             res.Download("image.jpg");
