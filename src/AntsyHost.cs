@@ -50,6 +50,19 @@ namespace Antsy
         }
 
         /// <summary>
+        /// Creates a new antsy host
+        /// </summary>
+        /// <param name="configure">Custom configuration of the asp.net web host builder.</param>
+        public AntsyHost(Action<IWebHostBuilder> configure)
+        {
+            _builder = new WebHostBuilder();
+            _builder
+                .ConfigureServices(ConfigureServices)
+                .Configure(Configure);
+            configure(_builder);
+        }
+
+        /// <summary>
         /// Handle a GET request at the given path.
         /// </summary>
         public void Get(string path, Action<AntsyRequest, AntsyResponse> del)

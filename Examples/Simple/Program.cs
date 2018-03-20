@@ -8,11 +8,11 @@ class Program
     static void Main(string[] args)
     {
         AntsyHost server = new AntsyHost(8000);
-        server.Get("/hello", (req, res) => 
+        server.Get("/", (req, res) => 
         {
             res.Text("Hello World!");
         });
-        server.Get("/hello/json", (req, res) =>
+        server.Get("/json", (req, res) =>
         {
             res.Json(new
             {

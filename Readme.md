@@ -2,7 +2,7 @@
 
 [![Build status](https://ci.appveyor.com/api/projects/status/vjdj2snfeh9b454u?svg=true)](https://ci.appveyor.com/project/TrexinanF14/antsy) [![NuGet](https://img.shields.io/nuget/v/Antsy.svg)](https://www.nuget.org/packages/Antsy/)
 
-This is a simple web framework for people who just want to get going with as few lines as possible.
+This is a web framework for people who just want to get going with as few lines as possible. Ideal for quickly making small applications.
 
 Here is a simple example:
 
@@ -27,15 +27,12 @@ class Program
 Antsy lets [ASP.NET Core](https://www.asp.net/core) do most of the heavy lifting so that it doesn't reinvent the wheel,
 but the api surface is inspired by [Express JS](http://expressjs.com/).
 
-The name is a bit of a rib at [Nancy](http://nancyfx.org/). If this actually becomes popular, my sincerest appologies
-to the Nancy maintainers. Any name confusion was both entirely avoidable, and my fault.
+The name is uncomfortably close to [Nancy](http://nancyfx.org/). If this actually becomes popular, my sincerest appologies
+to the Nancy maintainers. Any confusion was both entirely avoidable, and my fault.
 
-Because it leans heavily on aspnet this framework 
-should theoretically be relatively robust. Note that the host will not listen for https connections (just stick your favorite reverse proxy in front and do https termination there). All json model binding uses [Json.net](https://www.newtonsoft.com/json).
-
+Note that the host will not listen for https connections (just stick your favorite reverse proxy in front and do https termination there). All json model binding uses [Json.net](https://www.newtonsoft.com/json).
 
 This project targets [netstandard 2.0](https://docs.microsoft.com/en-us/dotnet/standard/net-standard) so if you're running dotnet core or a modern full framework this library should work for you.
-
 
 ### API
 
