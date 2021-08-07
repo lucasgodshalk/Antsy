@@ -29,9 +29,7 @@ namespace Antsy
     public void Json(object content)
     {
       if (content == null)
-      {
         throw new ArgumentNullException(nameof(content));
-      }
 
       _response.ContentType = "application/json";
 
@@ -51,9 +49,7 @@ namespace Antsy
         }
       }
       else
-      {
         contentStr = JsonConvert.SerializeObject(content);
-      }
 
       var bytes = Encoding.UTF8.GetBytes(contentStr);
 
@@ -65,7 +61,7 @@ namespace Antsy
     /// <summary>
     /// Formats the response as text.
     /// </summary>
-    public void Text(string text)
+    public void SendText(string text)
     {
       _response.ContentType = "text/plain";
 
@@ -85,7 +81,7 @@ namespace Antsy
     /// <summary>
     /// Formats the response as html. Can either be an html string or filepath.
     /// </summary>
-    public void Html(string html)
+    public void SendHtml(string html)
     {
       _response.ContentType = "text/html";
 
@@ -97,13 +93,9 @@ namespace Antsy
 
       byte[] bytes;
       if (File.Exists(html))
-      {
         bytes = File.ReadAllBytes(html);
-      }
       else
-      {
         bytes = Encoding.UTF8.GetBytes(html);
-      }
 
       _response.StatusCode = 200;
       _response.ContentLength = bytes.Length;
@@ -136,9 +128,7 @@ namespace Antsy
         }
       }
       else
-      {
         throw new FileNotFoundException(fileInfo.FullName);
-      }
     }
 
     #region HttpResponse
