@@ -1,6 +1,4 @@
-﻿# Antsy Web Framework
-
-[![Build status](https://ci.appveyor.com/api/projects/status/vjdj2snfeh9b454u?svg=true)](https://ci.appveyor.com/project/TrexinanF14/antsy) [![NuGet](https://img.shields.io/nuget/v/Antsy.svg)](https://www.nuget.org/packages/Antsy/)
+﻿# Antsy Web Framework - Updated
 
 This is a web framework for people who just want to get going with as few lines as possible. Ideal for quickly making small applications.
 
@@ -16,7 +14,7 @@ class Program
         var host = new AntsyHost(port: 8000);
         host.Get("/hello", (req, res) =>
         {
-            res.Text("hello world");
+            res.SendText("hello world");
         });
         host.Run();
         //Hit localhost:8000/hello
@@ -70,19 +68,19 @@ but gain helper methods to make them line up more with the Express API.
 Helper methods on the request object:
 ```csharp
 //Deserializes the body json to an object (using Json.net formatting).
-req.BodyJson<T>();
+req.ReadJson<T>();
 //Returns the body as text.
-req.BodyText();
+req.ReadText();
 ```
 
 Helper methods on the response object:
 ```csharp
 //Accepts either a POCO or a string. Formats response as json.
-res.Json(object obj);
+res.SendJson(object obj);
 //Formats the response as text.
-res.Text(string text);
+res.SendText(string text);
 //Formats the response as html (string or file).
-res.Html(string html);
+res.SendHtml(string html);
 //Serves the file as a download.
 res.Download(string filepath);
 res.Download(string filename, Stream filestream);
