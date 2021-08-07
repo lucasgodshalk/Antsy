@@ -26,7 +26,7 @@ namespace Antsy
     /// <summary>
     /// Formats a response as json. The content can either be a string or an object.
     /// </summary>
-    public void Json(object content)
+    public void SendJson(object content)
     {
       if (content == null)
         throw new ArgumentNullException(nameof(content));
@@ -105,7 +105,7 @@ namespace Antsy
     /// <summary>
     /// Formats the response as a file to download.
     /// </summary>
-    public void Download(string filename, Stream filecontent)
+    public void SendDownload(string filename, Stream filecontent)
     {
       _response.StatusCode = 200;
       _response.ContentType = "application/octet-stream";
@@ -117,7 +117,7 @@ namespace Antsy
     /// <summary>
     /// Formats the response as a file to download.
     /// </summary>
-    public void Download(string filepath)
+    public void SendDownload(string filepath)
     {
       FileInfo fileInfo = new FileInfo(Path.Combine(Directory.GetCurrentDirectory(), filepath));
       if (fileInfo.Exists)
