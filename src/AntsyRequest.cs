@@ -27,7 +27,7 @@ namespace Antsy
     /// <summary>
     /// Treats the request body as a json payload and deserializes to the specified type.
     /// </summary>
-    public T BodyJson<T>()
+    public T ReadJson<T>()
     {
       using (var sr = new StreamReader(Body, Encoding.UTF8))
       {
@@ -42,7 +42,7 @@ namespace Antsy
     /// <summary>
     /// Treats the request body as a text payload and returns the body as a string.
     /// </summary>
-    public string BodyText()
+    public string ReadText()
     {
       using (var sr = new StreamReader(Body, Encoding.UTF8))
       {
